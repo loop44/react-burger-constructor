@@ -1,0 +1,54 @@
+.header {
+  padding-top: 32px;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+}
+
+.navItem {
+  padding: 14px;
+}
+
+.navItem.active {
+  font-weight: 600;
+  border-bottom: 2px solid #5243C2;
+}
+
+.tel {
+  background-color: #FFEDED;
+  border-radius: 99px;
+  padding: 6px 12px 6px 32px;
+  color: #FF4D4F;
+  font-weight: 600;
+  position: relative;
+}
+
+.tel::before {
+  content: "";
+  background-image: url(../../assets/images/icons/tel.svg);
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
