@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   line-height: 20px;
@@ -20,8 +25,12 @@ a {
   color: inherit;
 }
 
-.container {
+.wrapper {
   max-width: 1564px;
   margin: 0 auto;
   padding: 0 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
