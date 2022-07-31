@@ -27,11 +27,11 @@ a {
 }
 
 .wrapper {
-  max-width: 1564px;
+  max-width: 1544px;
   margin: 0 auto;
-  padding: 0 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
