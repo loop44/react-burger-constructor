@@ -1,0 +1,16 @@
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  background-image: url(../../assets/images/main.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
+}
+
+.mainTitle {
+  max-width: 245px;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 80px;
+}
