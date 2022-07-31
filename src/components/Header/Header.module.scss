@@ -1,0 +1,57 @@
+.header {
+  padding-top: 32px;
+  max-height: 112px;
+  position: absolute;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.headerRight a {
+  display: inline-block;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+}
+
+.navItem {
+  padding: 14px;
+}
+
+.navItem.active {
+  font-weight: 600;
+  border-bottom: 2px solid #5243c2;
+}
+
+.tel {
+  background-color: #ffeded;
+  border-radius: 99px;
+  padding: 6px 12px 6px 32px;
+  color: #ff4d4f;
+  font-weight: 600;
+  position: relative;
+}
+
+.tel::before {
+  content: "";
+  background-image: url(../../assets/images/icons/tel.svg);
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
