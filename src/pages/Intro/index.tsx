@@ -1,7 +1,9 @@
+import React from "react";
 import Header from "../../components/Header";
+
 import styles from "./Intro.module.scss";
 
-const Intro = () => {
+const Intro: React.FC = () => {
   return (
     <>
       <Header />

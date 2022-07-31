@@ -1,3 +1,5 @@
+import React from "react";
+
 import styles from "./Footer.module.scss";
 
 import visa from "../../assets/images/icons/visa.svg";
@@ -8,7 +10,7 @@ import paypal from "../../assets/images/icons/paypal.svg";
 import bitcoin from "../../assets/images/icons/bitcoin.svg";
 import ethereum from "../../assets/images/icons/ethereum.svg";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.footerLeft}>

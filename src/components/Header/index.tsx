@@ -1,8 +1,10 @@
+import React from "react";
+
 import styles from "./Header.module.scss";
 
 import Logo from "../../assets/images/logo.svg";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
