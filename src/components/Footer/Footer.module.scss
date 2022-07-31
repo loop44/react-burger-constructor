@@ -1,0 +1,23 @@
+.footer {
+  padding: 26px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLeft {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #949ba6;
+  line-height: 16px;
+}
+
+.footerLeft a {
+  color: #5243c2;
+}
+
+.footerRight {
+  display: flex;
+  gap: 8px;
+}
