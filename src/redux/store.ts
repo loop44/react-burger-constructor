@@ -1,8 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import constructor from "./constructor/slice";
+import { useDispatch } from "react-redux";
+
+import burgerConstructor from "./burgerConstructor/slice";
 
 export const store = configureStore({
   reducer: {
-    counter: constructor,
+    burgerConstructor,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+
+type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
