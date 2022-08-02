@@ -1,12 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { selectChangeMode } from "../../redux/burgerConstructor/selectors";
 
 import styles from "./Header.module.scss";
 
 import Logo from "../../assets/images/logo.svg";
 
 const Header: React.FC = () => {
+  const changeMode = useSelector(selectChangeMode);
+
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${changeMode ? "" : `${styles.active}`}`}
+    >
       <div className={styles.headerWrapper}>
         <div className={styles.headerLeft}>
           <img className={styles.logo} src={Logo} alt="logo" />

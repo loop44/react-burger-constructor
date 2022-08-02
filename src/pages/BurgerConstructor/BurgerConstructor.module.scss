@@ -1,0 +1,52 @@
+.constructor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+  background-image: url(../../assets/images/bg.svg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  img {
+    max-width: 300px;
+    position: relative;
+    pointer-events: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+.constructorInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.constructor.active {
+  background-position: 50% 100%;
+  margin-top: -270px;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  padding: 10px;
+  background-color: blueviolet;
+  color: aliceblue;
+  margin: 10px;
+  cursor: pointer;
+  transition: top 0.3s ease-in-out;
+}
+.btn.active {
+  top: 65%;
+}

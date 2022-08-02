@@ -3,9 +3,10 @@ export type BurgerConstructorItem = {
   title: string;
   img: string;
   height: number;
-  normalHeight: number;  
+  normalHeight: number;
 };
 
 export interface BurgerConstructorSliceState {
   items: BurgerConstructorItem[];
+  changeMode: boolean;
 }

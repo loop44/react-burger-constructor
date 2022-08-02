@@ -1,10 +1,18 @@
 .header {
   padding-top: 14px;
   max-height: 112px;
-  position: absolute;
+  max-width: 1544px;
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
+  position: absolute;
+  top: -100px;
+  transition: top 0.3s ease-in-out;
+  z-index: 100000;
+}
+
+.header.active {
+  top: 0px;
 }
 
 .headerWrapper {
