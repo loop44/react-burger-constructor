@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import React, { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -8,11 +10,23 @@ import Intro from "./pages/Intro";
 const App: React.FC = () => {
   return (
     <div className="wrapper">
-      <Header />
-      {/* <Intro /> */}
-      <BurgerConstructor />
-      <IngredientsBar />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Intro />} />
+          <Route
+            path="/constructor"
+            element={
+              <>
+                <BurgerConstructor />
+                <IngredientsBar />
+              </>
+            }
+          ></Route>
+          <Route />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 };

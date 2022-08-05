@@ -6,6 +6,7 @@ import { selectChangeMode } from "../../redux/burgerConstructor/selectors";
 import styles from "./Header.module.scss";
 
 import Logo from "../../assets/images/logo.svg";
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   const changeMode = useSelector(selectChangeMode);
@@ -19,11 +20,29 @@ const Header: React.FC = () => {
           <img className={styles.logo} src={Logo} alt="logo" />
           <nav className="nav">
             <ul className={styles.navList}>
-              <li className={`${styles.navItem} ${styles.active}`}>
-                <a href="#">Discover</a>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navItem} ${styles.active}`
+                      : styles.navItem
+                  }
+                >
+                  Discover
+                </NavLink>
               </li>
-              <li className={styles.navItem}>
-                <a href="#">Make Your Burger</a>
+              <li>
+                <NavLink
+                  to="/constructor"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.navItem} ${styles.active}`
+                      : styles.navItem
+                  }
+                >
+                  Constructor
+                </NavLink>
               </li>
             </ul>
           </nav>
