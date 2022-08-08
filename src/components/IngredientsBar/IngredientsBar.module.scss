@@ -1,46 +1,78 @@
 .ingredientBar {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  bottom: -200px;
-  transition: bottom 0.2s ease-in-out;
+	width: 100%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	bottom: -200px;
+	transition: bottom 0.2s ease-in-out;
 
-  &.visible {
-    bottom: 81px;
-  }
+	&.visible {
+		bottom: 81px;
+	}
 }
 
 .ingredientBarInner {
-  width: 1344px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	width: 1344px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .inrgedientItem {
-  max-width: 140px;
-  border: 1px solid #f0f7fa;
-  padding: 24px 18px;
+	max-width: 140px;
+	border: 1px solid #f0f7fa;
+	padding: 24px 18px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 
-  img {
-    margin-bottom: 12px;
-  }
-  p {
-    margin-bottom: 12px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  div {
-    padding: 2px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  span {
-    padding: 2px 0;
-    font-size: 20px;
-    font-weight: 600;
-  }
+	svg {
+		cursor: pointer;
+
+		circle {
+			fill: #f5f5ff;
+			transition: fill 0.2s ease;
+		}
+
+		path {
+			stroke: #5243c2;
+			transition: stroke 0.2s ease;
+		}
+
+		&:hover {
+			circle {
+				fill: #5243c2;
+			}
+			path {
+				stroke: #f5f5ff;
+			}
+		}
+		&.disabled {
+			cursor: auto;
+			circle {
+				fill: #fafaff;
+			}
+			path {
+				stroke: #949ba6;
+			}
+		}
+	}
+	p {
+		margin-bottom: 12px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 600;
+	}
+	div {
+		padding: 2px 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	span {
+		padding: 2px 0;
+		font-size: 20px;
+		font-weight: 600;
+	}
 }

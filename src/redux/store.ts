@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
 import burgerConstructor from "./burgerConstructor/slice";
+import ingredients from "./ingredients/slice";
 
 export const store = configureStore({
   reducer: {
     burgerConstructor,
+    ingredients
   },
 });
 
