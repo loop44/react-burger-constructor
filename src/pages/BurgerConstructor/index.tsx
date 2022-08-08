@@ -30,7 +30,6 @@ const BurgerConstructor: React.FC = () => {
           animate={{ height: 134 }}
           initial={{ height: 95 }}
           style={{ zIndex: 10000 }}
-          transition={{ duration: 0.3 }}
         >
           <img src="/layers/top-bun.png" alt="top-bun" />
         </motion.div>

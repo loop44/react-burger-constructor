@@ -109,7 +109,7 @@ const IngredientsBar = () => {
   return (
     <div
       className={`${styles.ingredientBar} ${
-        changeMode ? "" : `${styles.active}`
+        changeMode ? "" : `${styles.visible}`
       }`}
     >
       <div className={styles.ingredientBarInner}>

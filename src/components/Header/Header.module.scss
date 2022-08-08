@@ -1,18 +1,16 @@
 .header {
   padding-top: 14px;
-  max-height: 112px;
-  max-width: 1544px;
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
   top: -100px;
-  transition: top 0.3s ease-in-out;
+  transition: top 0.2s ease-in-out;
   z-index: 100000;
-}
 
-.header.active {
-  top: 0px;
+  &.visible {
+    top: 0px;
+  }
 }
 
 .headerWrapper {
@@ -25,24 +23,31 @@
   display: flex;
   align-items: center;
   gap: 80px;
-}
 
-.headerRight a {
-  display: inline-block;
-}
+  img {
+    width: 80px;
+    height: 80px;
+  }
 
-.navList {
-  display: flex;
-  gap: 32px;
+  ul {
+    display: flex;
+    gap: 32px;
+  }
 }
 
 .navItem {
   padding: 14px;
+
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #5243c2;
+  }
 }
 
-.navItem.active {
-  font-weight: 600;
-  border-bottom: 2px solid #5243c2;
+.headerRight {
+  a {
+    display: inline-block;
+  }
 }
 
 .tel {

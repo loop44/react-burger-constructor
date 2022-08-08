@@ -19,7 +19,6 @@ const NormalLayers: React.FC<NormalLayersProps> = ({ initialItems }) => {
             key={item.id}
             animate={{ height: animatedHeight }}
             initial={{ height: initialHeight }}
-            transition={{ duration: 0.3 }}
           >
             <img
               src={item.img}

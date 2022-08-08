@@ -1,10 +1,18 @@
 .ingredientBar {
   width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: -200px;
+  transition: bottom 0.2s ease-in-out;
+
+  &.visible {
+    bottom: 81px;
+  }
 }
 
 .ingredientBarInner {
-  max-width: 1344px;
-  margin: 0 auto;
+  width: 1344px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,14 +1,15 @@
 import React from "react";
-import Header from "../../components/Header";
 
 import styles from "./Intro.module.scss";
+
+import mainImg from "../../assets/images/main.png";
 
 const Intro: React.FC = () => {
   return (
     <>
-      <Header />
       <div className={styles.main}>
-        <h1 className={styles.mainTitle}>Make Your Burger</h1>
+        <h1>Make Your Burger</h1>
+        <img src={mainImg} alt="" />
       </div>
     </>
   );

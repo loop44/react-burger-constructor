@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { selectChangeMode } from "../../redux/burgerConstructor/selectors";
 
 import styles from "./Footer.module.scss";
 
@@ -11,8 +14,12 @@ import bitcoin from "../../assets/images/icons/bitcoin.svg";
 import ethereum from "../../assets/images/icons/ethereum.svg";
 
 const Footer: React.FC = () => {
+  const changeMode = useSelector(selectChangeMode);
+
   return (
-    <div className={styles.footer}>
+    <div
+      className={`${styles.footer} ${changeMode ? "" : `${styles.visible}`}`}
+    >
       <div className={styles.footerLeft}>
         <p>2022. Make Your Burger</p>
         <a href="#">Privacy Policy</a> |<a href="#">Terms &#38; Conditions</a>
