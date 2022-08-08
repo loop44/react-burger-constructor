@@ -12,11 +12,14 @@ const burgerConstructorSlice = createSlice({
   name: "constructor",
   initialState,
   reducers: {
-    plusItem(state, action: PayloadAction<BurgerConstructorItem>) {
-      state.items.unshift(action.payload);
-    },
     setItems(state, action: PayloadAction<BurgerConstructorItem[]>) {
       state.items = action.payload;
+    },
+    removeAll(state) {
+      state.items.length = 0;
+    },
+    plusItem(state, action: PayloadAction<BurgerConstructorItem>) {
+      state.items.unshift(action.payload);
     },
     minusItem(state, action: PayloadAction<string>) {
       const index = state.items.findIndex((item) => {
@@ -45,8 +48,9 @@ const burgerConstructorSlice = createSlice({
 });
 
 export const {
-  plusItem,
   setItems,
+  removeAll,
+  plusItem,
   minusItem,
   toggleChangeMode,
   zoomIn,
