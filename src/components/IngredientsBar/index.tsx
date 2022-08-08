@@ -25,6 +25,10 @@ const IngredientsBar = () => {
 					img: item.bigImg,
 					height: item.height,
 					normalHeight: item.normalHeight,
+					price: item.price,
+					time: item.time,
+					oz: item.oz,
+					kcal: item.kcal,
 				})
 			);
 			dispatch(incrementItem(item.id));

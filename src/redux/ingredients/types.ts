@@ -6,6 +6,10 @@ export type IngredientItem = {
   height: number;
   normalHeight: number;
   count: number;
+  price: number;
+  time: number;
+  oz: number;
+  kcal: number;
 };
 
 export interface IngredientsSliceState {
