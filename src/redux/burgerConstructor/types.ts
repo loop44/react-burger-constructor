@@ -9,4 +9,5 @@ export type BurgerConstructorItem = {
 export interface BurgerConstructorSliceState {
   items: BurgerConstructorItem[];
   changeMode: boolean;
+  zoom: number;
 }

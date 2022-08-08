@@ -5,6 +5,7 @@ import { BurgerConstructorItem, BurgerConstructorSliceState } from "./types";
 const initialState: BurgerConstructorSliceState = {
   items: [],
   changeMode: false,
+  zoom: 6,
 };
 
 const burgerConstructorSlice = createSlice({
@@ -30,10 +31,26 @@ const burgerConstructorSlice = createSlice({
     toggleChangeMode(state) {
       state.changeMode = !state.changeMode;
     },
+    zoomIn(state) {
+      if (state.zoom < 6) {
+        state.zoom = state.zoom + 1;
+      }
+    },
+    zoomOut(state) {
+      if (state.zoom > 0) {
+        state.zoom = state.zoom - 1;
+      }
+    },
   },
 });
 
-export const { plusItem, setItems, minusItem, toggleChangeMode } =
-  burgerConstructorSlice.actions;
+export const {
+  plusItem,
+  setItems,
+  minusItem,
+  toggleChangeMode,
+  zoomIn,
+  zoomOut,
+} = burgerConstructorSlice.actions;
 
 export default burgerConstructorSlice.reducer;
