@@ -41,7 +41,7 @@
 		font-weight: 700;
 		font-size: 72px;
 		line-height: 80px;
-		padding-top: 100px;
+		padding-top: 65px;
 	}
 }
 
@@ -56,4 +56,15 @@
 
 .constructor.active {
 	padding-bottom: 270px;
+}
+
+.bottomBun {
+	position: relative;
+
+	.ketchup {
+		position: absolute;
+		z-index: 1000000;
+		right: -75px;
+		top: -20px;
+	}
 }

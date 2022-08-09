@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { RootState } from "../../redux/store";
 
@@ -7,7 +9,6 @@ import weightIcon from "../../assets/images/icons/weight.svg";
 import kcalIcon from "../../assets/images/icons/kcal.svg";
 
 import styles from "./Summary.module.scss";
-import { useSelector } from "react-redux";
 
 const Summary: React.FC = () => {
 	const { price, time, oz, kcal } = useSelector(
@@ -39,6 +40,18 @@ const Summary: React.FC = () => {
 						<p>{kcal.toFixed(1)} kcal</p>
 					</div>
 				</div>
+				<AnimatePresence>
+					{price >= 10 ? (
+						<motion.h3
+							className={styles.ketchup}
+							animate={{ opacity: 1 }}
+							initial={{ opacity: 0 }}
+							exit={{ opacity: 0 }}
+						>
+							+ Free Tomato Ketchup 🎁
+						</motion.h3>
+					) : null}
+				</AnimatePresence>
 			</div>
 		</div>
 	);
