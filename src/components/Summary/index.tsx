@@ -19,7 +19,7 @@ const Summary: React.FC = () => {
 			<div>
 				<h2 className={styles.summaryTitle}>Summary</h2>
 				<div className={styles.summaryOrder}>
-					<span>${price}</span>
+					<span>${price.toFixed(2)}</span>
 					<a href="#">Checkout</a>
 				</div>
 				<p className={styles.summaryText}>
@@ -28,15 +28,15 @@ const Summary: React.FC = () => {
 				<div className={styles.summaryInfo}>
 					<div>
 						<img src={timeIcon} alt="time" />
-						<p>{time} min</p>
+						<p>{time.toFixed(1)} min</p>
 					</div>
 					<div>
 						<img src={weightIcon} alt="weight" />
-						<p>{oz} oz</p>
+						<p>{oz.toFixed(1)} oz</p>
 					</div>
 					<div>
 						<img src={kcalIcon} alt="kcal" />
-						<p>{kcal} kcal</p>
+						<p>{kcal.toFixed(1)} kcal</p>
 					</div>
 				</div>
 			</div>
