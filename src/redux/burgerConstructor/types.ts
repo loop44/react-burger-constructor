@@ -1,5 +1,5 @@
 export type BurgerConstructorItem = {
-  id: number;
+  id: string;
   title: string;
   img: string;
   height: number;

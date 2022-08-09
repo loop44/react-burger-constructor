@@ -1,15 +1,19 @@
+import { useId } from "react";
 import { useSelector } from "react-redux";
+import { v4 as uuid } from "uuid";
 
 import { useAppDispatch } from "../../redux/store";
+
 import { plusItem } from "../../redux/burgerConstructor/slice";
 import { minusItem } from "../../redux/burgerConstructor/slice";
+
+import { decrementItem, incrementItem } from "../../redux/ingredients/slice";
 import { selectChangeMode } from "../../redux/burgerConstructor/selectors";
+import { selectIngredients } from "../../redux/ingredients/selectors";
 
 import styles from "./IngredientsBar.module.scss";
 
 import { IngredientItem } from "../../redux/ingredients/types";
-import { selectIngredients } from "../../redux/ingredients/selectors";
-import { decrementItem, incrementItem } from "../../redux/ingredients/slice";
 
 const IngredientsBar = () => {
 	const dispatch = useAppDispatch();
@@ -20,7 +24,7 @@ const IngredientsBar = () => {
 		if (item.count < 5) {
 			dispatch(
 				plusItem({
-					id: Math.floor(Math.random() * 10000),
+					id: uuid(),
 					title: item.title,
 					img: item.bigImg,
 					height: item.height,
