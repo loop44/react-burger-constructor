@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuid } from "uuid";
 
 import {
-	AddedBurger,
+	SetBurgerActionObject,
 	BurgerConstructorItem,
 	BurgerConstructorSliceState,
 } from "./types";
@@ -23,8 +24,27 @@ const burgerConstructorSlice = createSlice({
 		setItems(state, action: PayloadAction<BurgerConstructorItem[]>) {
 			state.items = action.payload;
 		},
-		setBurger(state, action: PayloadAction<AddedBurger>) {
-			state.items = action.payload.layers;
+		setBurger(state, action: PayloadAction<SetBurgerActionObject>) {
+			if (state.items) {
+				state.items.length = 0;
+			}
+			action.payload.layers.forEach((item: any) => {
+				action.payload.commonIngredients.forEach((ingredient) => {
+					if (item === ingredient.title) {
+						state.items.push({
+							id: uuid(),
+							title: ingredient.title,
+							img: ingredient.bigImg,
+							height: ingredient.height,
+							normalHeight: ingredient.normalHeight,
+							price: ingredient.price,
+							time: ingredient.time,
+							oz: ingredient.oz,
+							kcal: ingredient.kcal,
+						});
+					}
+				});
+			});
 			state.price = Number(action.payload.totalPrice.toFixed(2));
 			state.time = Number(action.payload.totalTime.toFixed(2));
 			state.oz = Number(action.payload.totalOz.toFixed(2));

@@ -118,8 +118,8 @@ const ingredientsSlice = createSlice({
 		setIngredients(state, action: PayloadAction<AddedIngredients>) {
 			state.items.forEach((item) => {
 				action.payload.forEach((layer) => {
-					if (item.title === layer.name) {
-						item.count = layer.count;
+					if (item.title === layer) {
+						item.count++;
 					}
 				});
 			});

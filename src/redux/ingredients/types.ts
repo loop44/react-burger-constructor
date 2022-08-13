@@ -16,9 +16,4 @@ export interface IngredientsSliceState {
 	items: IngredientItem[];
 }
 
-export type AddedIngredients = [
-	{
-		name: string;
-		count: number;
-	}
-];
+export type AddedIngredients = string[];

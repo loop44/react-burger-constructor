@@ -30,7 +30,6 @@ const zoomSizes = [
 
 const BurgerConstructor: React.FC = () => {
 	const initialItems = useSelector(selectItems);
-	console.log(initialItems);
 
 	const changeMode = useSelector(selectChangeMode);
 	const totalPrice = useSelector(selectTotalPrice);

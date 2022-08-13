@@ -1,11 +1,13 @@
+import produce from "immer";
 import React, { useEffect, useState } from "react";
 import Scrollbars from "react-custom-scrollbars-2";
 
 import { useNavigate } from "react-router-dom";
+
 import { setBurger } from "../../redux/burgerConstructor/slice";
 
 import { setIngredients } from "../../redux/ingredients/slice";
-import { useAppDispatch } from "../../redux/store";
+import { store, useAppDispatch } from "../../redux/store";
 
 import styles from "./Burgers.module.scss";
 
@@ -15,8 +17,13 @@ const Burgers: React.FC = () => {
 	const [items, setItems] = useState([]);
 
 	const onSettiingsClick = (item: any) => {
-		dispatch(setBurger(item));
-		dispatch(setIngredients(item.ingredients));
+		dispatch(
+			setBurger({
+				...item,
+				commonIngredients: store.getState().ingredients.items,
+			})
+		);
+		dispatch(setIngredients(item.layers));
 		navigate("/constructor");
 	};
 
@@ -86,16 +93,25 @@ const Burgers: React.FC = () => {
 									<img src="/layers/bottom-bun.png" alt="bottom-bun" />
 								</div>
 								<div>
-									{item.layers.map((layer: any, index: number) => {
+									{item.layers.map((layerData: any, index: number) => {
+										const layer = store
+											.getState()
+											.ingredients.items.find((ingredient) => {
+												return ingredient.title === layerData;
+											});
+
+										if (!layer) {
+											return <></>;
+										}
 										return (
 											<div
-												key={layer.id}
+												key={index}
 												style={{
 													height: layer.height,
 												}}
 											>
 												<img
-													src={layer.img}
+													src={layer.bigImg}
 													style={{
 														zIndex: item.layers.length - index + 1,
 													}}
