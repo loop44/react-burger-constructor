@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { AddedIngredients, IngredientsSliceState } from "./types";
+import { AdddIngredientsObject, IngredientsSliceState } from "./types";
 
 const initialState: IngredientsSliceState = {
 	items: [
@@ -115,7 +115,7 @@ const ingredientsSlice = createSlice({
 	name: "constructor",
 	initialState,
 	reducers: {
-		setIngredients(state, action: PayloadAction<AddedIngredients>) {
+		setIngredients(state, action: PayloadAction<AdddIngredientsObject>) {
 			state.items.forEach((item) => {
 				action.payload.forEach((layer) => {
 					if (item.title === layer) {

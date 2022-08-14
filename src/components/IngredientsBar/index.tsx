@@ -24,11 +24,13 @@ const IngredientsBar = () => {
 		if (item.count < 5) {
 			dispatch(
 				plusItem({
-					id: uuid(),
-					title: item.title,
-					img: item.bigImg,
-					height: item.height,
-					normalHeight: item.normalHeight,
+					item: {
+						id: uuid(),
+						title: item.title,
+						img: item.bigImg,
+						height: item.height,
+						normalHeight: item.normalHeight,
+					},
 					price: item.price,
 					time: item.time,
 					oz: item.oz,
@@ -41,7 +43,15 @@ const IngredientsBar = () => {
 
 	const onMinusItemClick = (item: IngredientItem) => {
 		if (item.count > 0) {
-			dispatch(minusItem(item.title));
+			dispatch(
+				minusItem({
+					title: item.title,
+					price: item.price,
+					time: item.time,
+					oz: item.oz,
+					kcal: item.kcal,
+				})
+			);
 			dispatch(decrementItem(item.id));
 		}
 	};

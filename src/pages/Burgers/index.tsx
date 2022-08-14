@@ -19,7 +19,7 @@ const Burgers: React.FC = () => {
 	const onSettiingsClick = (item: any) => {
 		dispatch(
 			setBurger({
-				...item,
+				layers: item.layers,
 				commonIngredients: store.getState().ingredients.items,
 			})
 		);

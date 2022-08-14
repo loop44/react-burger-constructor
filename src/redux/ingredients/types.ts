@@ -16,4 +16,4 @@ export interface IngredientsSliceState {
 	items: IngredientItem[];
 }
 
-export type AddedIngredients = string[];
+export type AdddIngredientsObject = string[];

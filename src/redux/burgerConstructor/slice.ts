@@ -5,6 +5,8 @@ import {
 	SetBurgerActionObject,
 	BurgerConstructorItem,
 	BurgerConstructorSliceState,
+	AddBurgerObject,
+	RemoveBurgerObject,
 } from "./types";
 
 const initialState: BurgerConstructorSliceState = {
@@ -37,18 +39,14 @@ const burgerConstructorSlice = createSlice({
 							img: ingredient.bigImg,
 							height: ingredient.height,
 							normalHeight: ingredient.normalHeight,
-							price: ingredient.price,
-							time: ingredient.time,
-							oz: ingredient.oz,
-							kcal: ingredient.kcal,
 						});
+						state.price = Number((state.price + ingredient.price).toFixed(2));
+						state.time = Number((state.time + ingredient.time).toFixed(2));
+						state.oz = Number((state.oz + ingredient.oz).toFixed(2));
+						state.kcal = Number((state.kcal + ingredient.kcal).toFixed(2));
 					}
 				});
 			});
-			state.price = Number(action.payload.totalPrice.toFixed(2));
-			state.time = Number(action.payload.totalTime.toFixed(2));
-			state.oz = Number(action.payload.totalOz.toFixed(2));
-			state.kcal = Number(action.payload.totalKcal.toFixed(2));
 		},
 		removeAll(state) {
 			state.items.length = 0;
@@ -57,26 +55,24 @@ const burgerConstructorSlice = createSlice({
 			state.oz = 0;
 			state.kcal = 0;
 		},
-		plusItem(state, action: PayloadAction<BurgerConstructorItem>) {
-			state.items.unshift(action.payload);
-			state.price = Number((action.payload.price + state.price).toFixed(2));
-			state.time = Number((action.payload.time + state.time).toFixed(2));
-			state.oz = Number((action.payload.oz + state.oz).toFixed(2));
-			state.kcal = Number((action.payload.kcal + state.kcal).toFixed(2));
+		plusItem(state, action: PayloadAction<AddBurgerObject>) {
+			state.items.unshift(action.payload.item);
+			state.price = Number((state.price + action.payload.price).toFixed(2));
+			state.time = Number((state.time + action.payload.time).toFixed(2));
+			state.oz = Number((state.oz + action.payload.oz).toFixed(2));
+			state.kcal = Number((state.kcal + action.payload.kcal).toFixed(2));
 		},
-		minusItem(state, action: PayloadAction<string>) {
+		minusItem(state, action: PayloadAction<RemoveBurgerObject>) {
 			const index = state.items.findIndex((item) => {
-				if (item.title === action.payload) {
+				if (item.title === action.payload.title) {
 					return true;
 				}
 			});
 			if (index !== -1) {
-				state.price = Number(
-					(state.price - state.items[index].price).toFixed(2)
-				);
-				state.time = Number((state.time - state.items[index].time).toFixed(2));
-				state.oz = Number((state.oz - state.items[index].oz).toFixed(2));
-				state.kcal = Number((state.kcal - state.items[index].kcal).toFixed(2));
+				state.price = Number((state.price - action.payload.price).toFixed(2));
+				state.time = Number((state.time - action.payload.time).toFixed(2));
+				state.oz = Number((state.oz - action.payload.oz).toFixed(2));
+				state.kcal = Number((state.kcal - action.payload.kcal).toFixed(2));
 				state.items.splice(index, 1);
 			}
 		},
