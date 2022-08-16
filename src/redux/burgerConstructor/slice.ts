@@ -29,6 +29,10 @@ const burgerConstructorSlice = createSlice({
 		setBurger(state, action: PayloadAction<SetBurgerActionObject>) {
 			if (state.items) {
 				state.items.length = 0;
+				state.price = 0;
+				state.time = 0;
+				state.oz = 0;
+				state.kcal = 0;
 			}
 			action.payload.layers.forEach((item: string) => {
 				action.payload.commonIngredients.forEach((ingredient) => {
