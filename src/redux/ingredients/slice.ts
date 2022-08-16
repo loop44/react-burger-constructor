@@ -117,6 +117,9 @@ const ingredientsSlice = createSlice({
 	reducers: {
 		setIngredients(state, action: PayloadAction<AdddIngredientsObject>) {
 			state.items.forEach((item) => {
+				if (item.count > 0) {
+					item.count = 0;
+				}
 				action.payload.forEach((layer) => {
 					if (item.title === layer) {
 						item.count++;
