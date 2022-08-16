@@ -29,7 +29,6 @@ export const sortList = [
 
 const Filter: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const sortRef = React.useRef<HTMLDivElement>(null);
 	const { sort, categoryId } = useSelector(selectFilter);
 	const [open, setOpen] = React.useState(false);
 	const [value, setValue] = React.useState<string>("");

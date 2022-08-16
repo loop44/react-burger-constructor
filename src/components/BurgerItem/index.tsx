@@ -9,6 +9,9 @@ import { setIngredients } from "../../redux/ingredients/slice";
 import { BurgerShopItem } from "../../redux/burgersShop/types";
 
 import styles from "./BurgerItem.module.scss";
+import Modal from "../Modal";
+import { useSelector } from "react-redux";
+import { selectItems } from "../../redux/burgerConstructor/selectors";
 
 type BurgerItemProps = {
 	item: BurgerShopItem;
@@ -17,16 +20,22 @@ type BurgerItemProps = {
 const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const burgerlayers = useSelector(selectItems);
+	const [visible, setVisible] = React.useState(false);
 
 	const onSettiingsClick = (item: BurgerShopItem) => {
-		dispatch(
-			setBurger({
-				layers: item.layers,
-				commonIngredients: store.getState().ingredients.items,
-			})
-		);
-		dispatch(setIngredients(item.layers));
-		navigate("/constructor");
+		if (burgerlayers.length > 0) {
+			setVisible(true);
+		} else {
+			dispatch(
+				setBurger({
+					layers: item.layers,
+					commonIngredients: store.getState().ingredients.items,
+				})
+			);
+			dispatch(setIngredients(item.layers));
+			navigate("/constructor");
+		}
 	};
 
 	return (
@@ -92,6 +101,28 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 						strokeLinejoin="round"
 					/>
 				</svg>
+				<Modal
+					visible={visible}
+					title="Warning!"
+					resolveHandler={() => {
+						dispatch(
+							setBurger({
+								layers: item.layers,
+								commonIngredients: store.getState().ingredients.items,
+							})
+						);
+						dispatch(setIngredients(item.layers));
+						navigate("/constructor");
+					}}
+					rejectHandler={() => {
+						setVisible(false);
+					}}
+				>
+					<p>
+						"You already have a burger in the constructor! If you click OK it
+						will be deleted"
+					</p>
+				</Modal>
 			</div>
 		</div>
 	);
