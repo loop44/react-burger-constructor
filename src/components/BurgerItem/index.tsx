@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
 import { store, useAppDispatch } from "../../redux/store";
 
@@ -12,6 +13,7 @@ import styles from "./BurgerItem.module.scss";
 import Modal from "../Modal";
 import { useSelector } from "react-redux";
 import { selectItems } from "../../redux/burgerConstructor/selectors";
+import { setItem } from "../../redux/cart/slice";
 
 type BurgerItemProps = {
 	item: BurgerShopItem;
@@ -36,6 +38,16 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 			dispatch(setIngredients(item.layers));
 			navigate("/constructor");
 		}
+	};
+
+	const onAddToCartClick = (item: BurgerShopItem) => {
+		dispatch(
+			setItem({
+				id: uuid(),
+				name: item.title,
+				price: item.totalPrice,
+			})
+		);
 	};
 
 	return (
@@ -103,6 +115,7 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 						/>
 					</svg>
 					<svg
+						onClick={() => onAddToCartClick(item)}
 						width="28"
 						height="28"
 						viewBox="0 0 28 28"

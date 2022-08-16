@@ -112,7 +112,7 @@ const initialState: IngredientsSliceState = {
 };
 
 const ingredientsSlice = createSlice({
-	name: "constructor",
+	name: "ingredients",
 	initialState,
 	reducers: {
 		setIngredients(state, action: PayloadAction<AdddIngredientsObject>) {

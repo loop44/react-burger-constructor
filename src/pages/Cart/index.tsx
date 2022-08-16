@@ -1,61 +1,33 @@
 import React from "react";
 import Scrollbars from "react-custom-scrollbars-2";
+import { useSelector } from "react-redux";
+
+import { useAppDispatch } from "../../redux/store";
+
+import { selectCartData } from "../../redux/cart/selectors";
+import { deleteItem, removeAllItems } from "../../redux/cart/slice";
+
+import { CartItem } from "../../redux/cart/types";
 
 import styles from "./Cart.module.scss";
 
-const cartItems = [
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-	{
-		title: "Cheezy",
-		price: 123,
-	},
-];
-
 const Cart: React.FC = () => {
+	const dispatch = useAppDispatch();
+	const cartItemsData = useSelector(selectCartData);
+
+	const onClickRemove = (item: CartItem) => {
+		dispatch(deleteItem(item));
+	};
+
+	const onClickRemoveAll = () => {
+		dispatch(removeAllItems());
+	};
+
 	return (
 		<div className={styles.cart}>
 			<div className={styles.header}>
 				<h1>Cart</h1>
-				<div className={styles.remove}>
+				<div className={styles.remove} onClick={onClickRemoveAll}>
 					<svg
 						width="20"
 						height="22"
@@ -75,13 +47,14 @@ const Cart: React.FC = () => {
 				</div>
 			</div>
 			<Scrollbars style={{ height: "100%" }} autoHide>
-				{cartItems.map((item, index) => {
+				{cartItemsData.items.map((item) => {
 					return (
-						<div className={styles.cartItem} key={index}>
-							<h2>{item.title}</h2>
+						<div className={styles.cartItem} key={item.id}>
+							<h2>{item.name}</h2>
 							<div className={styles.rightBlock}>
 								<p className={styles.price}>${item.price}</p>
 								<svg
+									onClick={() => onClickRemove(item)}
 									width="28"
 									height="28"
 									viewBox="0 0 28 28"
@@ -106,10 +79,10 @@ const Cart: React.FC = () => {
 			<div className={styles.footer}>
 				<div className={styles.total}>
 					<p>
-						Total count: <span>2</span>
+						Total count: <span>{cartItemsData.totalCount}</span>
 					</p>
 					<p>
-						Total price: <span>$13</span>
+						Total price: <span>${cartItemsData.totalPrice}</span>
 					</p>
 				</div>
 				<div className={styles.buttonBlock}>

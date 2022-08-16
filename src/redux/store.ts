@@ -5,6 +5,7 @@ import burgerConstructor from "./burgerConstructor/slice";
 import ingredients from "./ingredients/slice";
 import burgers from "./burgersShop/slice";
 import filter from "./filter/slice";
+import cart from "./cart/slice";
 
 export const store = configureStore({
 	reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
 		ingredients,
 		burgers,
 		filter,
+		cart,
 	},
 });
 

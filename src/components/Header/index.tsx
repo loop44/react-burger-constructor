@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 
 import { selectChangeMode } from "../../redux/burgerConstructor/selectors";
+import { selectCartData } from "../../redux/cart/selectors";
 
 import styles from "./Header.module.scss";
 
@@ -11,6 +12,7 @@ import Logo from "../../assets/images/logo.svg";
 const Header: React.FC = () => {
 	const changeMode = useSelector(selectChangeMode);
 	const location = useLocation();
+	const { totalCount, totalPrice } = useSelector(selectCartData);
 
 	return (
 		<header
@@ -79,7 +81,7 @@ const Header: React.FC = () => {
 									strokeLinejoin="round"
 								/>
 							</svg>
-							<span>12</span>
+							<span>{totalCount}</span>
 							<span>|</span>
 							<svg
 								width="18"
@@ -97,7 +99,7 @@ const Header: React.FC = () => {
 								/>
 							</svg>
 
-							<span>123</span>
+							<span>{totalPrice}</span>
 						</NavLink>
 					) : null}
 				</div>

@@ -45,13 +45,18 @@ const BurgerConstructor: React.FC = () => {
 					initial={{ height: 95 }}
 					style={{ zIndex: 10000 }}
 				>
-					<img src="/layers/top-bun.png" alt="top-bun" />
+					<img
+						className={styles.constructorImg}
+						src="/layers/top-bun.png"
+						alt="top-bun"
+					/>
 				</motion.div>
 			);
 		} else {
 			return (
 				<motion.div animate={{ height: 95 }} initial={{ height: 134 }}>
 					<img
+						className={styles.constructorImg}
 						src="/layers/top-bun.png"
 						alt="top-bun"
 						style={{ zIndex: 10000 }}
@@ -68,7 +73,7 @@ const BurgerConstructor: React.FC = () => {
 			}`}
 		>
 			<div className={styles.constructorInner}>
-				<h1>Make Your Burger</h1>
+				<h1 className={styles.title}>Make Your Burger</h1>
 				<div
 					className={styles.constructorBurger}
 					style={{ transform: `scale(${scale}) translateY(${translateY}px)` }}
@@ -86,7 +91,11 @@ const BurgerConstructor: React.FC = () => {
 								/>
 							) : null}
 						</AnimatePresence>
-						<img src="/layers/bottom-bun.png" alt="bottom-bun" />
+						<img
+							className={styles.constructorImg}
+							src="/layers/bottom-bun.png"
+							alt="bottom-bun"
+						/>
 					</div>
 
 					{changeMode ? (

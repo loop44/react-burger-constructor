@@ -8,8 +8,8 @@ type ModalProps = {
 	visible: boolean;
 	title: string;
 	children: React.ReactNode;
-	resolveHandler?: () => void;
-	rejectHandler?: () => void;
+	resolveHandler?: (() => void) | null;
+	rejectHandler?: (() => void) | null;
 };
 
 const Modal: React.FC<ModalProps> = ({
@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
 	const overlayRef = useRef(null);
 
-	const onClickOverlay = (e: any) => {
+	const onClickOverlay = (e: React.MouseEvent) => {
 		if (e.target === overlayRef.current) {
 			rejectHandler?.();
 		}
@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({
 			ref={overlayRef}
 		>
 			<div className={styles.modal}>
-				<h1>{title}</h1>
+				<h1 className={styles.title}>{title}</h1>
 				<div className={styles.children}>{children}</div>
 				<div className={styles.buttons}>
 					{rejectHandler ? (
@@ -53,7 +53,11 @@ const Modal: React.FC<ModalProps> = ({
 						</button>
 					) : null}
 				</div>
-				<img src={close} alt="" onClick={rejectHandler} />
+				<img
+					src={close}
+					alt=""
+					onClick={rejectHandler ? rejectHandler : () => {}}
+				/>
 			</div>
 		</div>
 	);
