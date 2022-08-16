@@ -30,7 +30,7 @@ const burgerConstructorSlice = createSlice({
 			if (state.items) {
 				state.items.length = 0;
 			}
-			action.payload.layers.forEach((item: any) => {
+			action.payload.layers.forEach((item: string) => {
 				action.payload.commonIngredients.forEach((ingredient) => {
 					if (item === ingredient.title) {
 						state.items.push({

@@ -17,7 +17,7 @@ import Filter from "../../components/Filter";
 
 import styles from "./Burgers.module.scss";
 import Skeleton from "../../components/BurgerItem/Skeleton";
-import { FetchStatus } from "../../redux/burgersShop/types";
+import { BurgerShopItem, FetchStatus } from "../../redux/burgersShop/types";
 
 const Burgers: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -43,7 +43,7 @@ const Burgers: React.FC = () => {
 		getPizzas();
 	}, [categoryId, sort]);
 
-	const burgers = items.map((item: any) => (
+	const burgers = items.map((item: BurgerShopItem) => (
 		<BurgerItem key={item.id} item={item} />
 	));
 	const skeletons = [...new Array(12)].map((_, index) => (

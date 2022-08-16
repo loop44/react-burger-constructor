@@ -18,7 +18,7 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const onSettiingsClick = (item: any) => {
+	const onSettiingsClick = (item: BurgerShopItem) => {
 		dispatch(
 			setBurger({
 				layers: item.layers,
@@ -36,7 +36,7 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 					<img src="/layers/bottom-bun.png" alt="bottom-bun" />
 				</div>
 				<div>
-					{item.layers.map((layerData: any, index: number) => {
+					{item.layers.map((layerData: string, index: number) => {
 						const layer = store
 							.getState()
 							.ingredients.items.find((ingredient) => {

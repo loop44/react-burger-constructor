@@ -11,10 +11,6 @@ import arrowDown from "../../assets/images/icons/arrow-down.svg";
 import styles from "./Filter.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
-type PopupClick = MouseEvent & {
-	path: Node[];
-};
-
 const categories = ["All", "Meat", "Vegan", "Cheezy"];
 export const sortList = [
 	{ name: "popularity", sortProperty: SortPropertyEnum.RATING_DESC },
