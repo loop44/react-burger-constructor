@@ -24,4 +24,5 @@ export type Category = number;
 export interface FilterSliceState {
 	categoryId: Category;
 	sort: Sort;
+	searchValue: string;
 }

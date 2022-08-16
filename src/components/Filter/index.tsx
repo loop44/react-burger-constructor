@@ -1,15 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectFilter } from "../../redux/filter/selectors";
-import { setCategory, setSort } from "../../redux/filter/slice";
-import { Sort, SortPropertyEnum } from "../../redux/filter/types";
+import { AnimatePresence, motion } from "framer-motion";
+import debounce from "lodash.debounce";
+
 import { useAppDispatch } from "../../redux/store";
+
+import { selectFilter } from "../../redux/filter/selectors";
+
+import { setCategory, setSearchValue, setSort } from "../../redux/filter/slice";
+import { Sort, SortPropertyEnum } from "../../redux/filter/types";
 
 import arrowUp from "../../assets/images/icons/arrow-up.svg";
 import arrowDown from "../../assets/images/icons/arrow-down.svg";
+import search from "../../assets/images/icons/search.svg";
+import clear from "../../assets/images/icons/clear.svg";
 
 import styles from "./Filter.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
 
 const categories = ["All", "Meat", "Vegan", "Cheezy"];
 export const sortList = [
@@ -25,16 +31,35 @@ const Filter: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const sortRef = React.useRef<HTMLDivElement>(null);
 	const { sort, categoryId } = useSelector(selectFilter);
+	const [open, setOpen] = React.useState(false);
+	const [value, setValue] = React.useState<string>("");
+	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	const onChangeCategory = React.useCallback((idx: number) => {
 		dispatch(setCategory(idx));
 	}, []);
 
-	const [open, setOpen] = React.useState(false);
-
 	const onClickListItem = (obj: Sort) => {
 		dispatch(setSort(obj));
 		setOpen(false);
+	};
+
+	const onClickClear = () => {
+		dispatch(setSearchValue(""));
+		setValue("");
+		inputRef.current?.focus();
+	};
+
+	const updateSearchValue = React.useCallback(
+		debounce((str: string) => {
+			dispatch(setSearchValue(str));
+		}, 500),
+		[]
+	);
+
+	const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setValue(event.target.value);
+		updateSearchValue(event.target.value);
 	};
 
 	return (
@@ -52,23 +77,24 @@ const Filter: React.FC = () => {
 					))}
 				</ul>
 				<div className={styles.search}>
-					<svg
-						width="18"
-						height="18"
-						viewBox="0 0 20 20"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M19 19L13.0001 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
-							stroke="black"
-							strokeWidth="1"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-						/>
-					</svg>
+					<img src={search} alt="" />
 
-					<input placeholder="Search..." type="text" />
+					<input
+						ref={inputRef}
+						value={value}
+						onChange={onChangeInput}
+						placeholder="Search..."
+						type="text"
+					/>
+
+					{value && (
+						<img
+							onClick={onClickClear}
+							className={styles.clearIcon}
+							src={clear}
+							alt=""
+						/>
+					)}
 				</div>
 			</div>
 			<div className={styles.sortBlock}>

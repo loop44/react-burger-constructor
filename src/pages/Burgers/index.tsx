@@ -23,7 +23,7 @@ const Burgers: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const items = useSelector(selectBurgers);
 	const loadingStatus = useSelector(selectLoadingStatus);
-	const { sort, categoryId } = useSelector(selectFilter);
+	const { sort, categoryId, searchValue } = useSelector(selectFilter);
 
 	const getPizzas = async () => {
 		const sortBy = sort.sortProperty.replace("-", "");
@@ -43,9 +43,23 @@ const Burgers: React.FC = () => {
 		getPizzas();
 	}, [categoryId, sort]);
 
-	const burgers = items.map((item: BurgerShopItem) => (
-		<BurgerItem key={item.id} item={item} />
-	));
+	/*
+		Client Search
+
+		The search is done on the client because mockApi does not work 
+		well with search parameters: if you select a category 
+		sort and do a search by name, it will ignore the search and 
+		sort parameters
+	*/
+	const burgers = items
+		.filter((obj) => {
+			if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
+				return true;
+			} else {
+				return false;
+			}
+		})
+		.map((item: BurgerShopItem) => <BurgerItem key={item.id} item={item} />);
 	const skeletons = [...new Array(12)].map((_, index) => (
 		<Skeleton key={index} />
 	));

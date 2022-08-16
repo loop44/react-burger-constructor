@@ -26,13 +26,10 @@
 	.search {
 		position: relative;
 
-		svg {
+		img {
 			top: 18px;
 			left: 15px;
 			position: absolute;
-			path {
-				stroke: #949ba6;
-			}
 		}
 
 		input {
@@ -57,6 +54,13 @@
 			&:focus {
 				border: 1px solid #5243c2;
 			}
+		}
+
+		.clearIcon {
+			top: 16px;
+			left: auto;
+			right: 11px;
+			cursor: pointer;
 		}
 	}
 }
