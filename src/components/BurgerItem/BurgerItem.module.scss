@@ -35,25 +35,30 @@
 			font-weight: 600;
 		}
 
-		svg {
-			width: 40px;
-			height: 40px;
-			cursor: pointer;
+		.buttons {
+			display: flex;
+			gap: 10px;
 
-			path {
-				stroke: #bcb9d3;
-				transition: stroke 0.2s ease;
-			}
+			svg {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
 
-			&.active {
 				path {
-					stroke: #5243c2;
+					stroke: #bcb9d3;
+					transition: stroke 0.2s ease;
 				}
-			}
 
-			&:hover {
-				path {
-					stroke: #5243c2;
+				&.active {
+					path {
+						stroke: #5243c2;
+					}
+				}
+
+				&:hover {
+					path {
+						stroke: #5243c2;
+					}
 				}
 			}
 		}

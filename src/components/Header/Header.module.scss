@@ -1,70 +1,68 @@
 .header {
-  padding-top: 14px;
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: absolute;
-  top: -100px;
-  transition: top 0.2s ease-in-out;
-  z-index: 100000;
+	padding-top: 14px;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: absolute;
+	top: -100px;
+	transition: top 0.2s ease-in-out;
+	z-index: 100000;
 
-  &.visible {
-    top: 0px;
-  }
+	&.visible {
+		top: 0px;
+	}
 }
 
 .headerWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .headerLeft {
-  display: flex;
-  align-items: center;
-  gap: 80px;
+	display: flex;
+	align-items: center;
+	gap: 80px;
 
-  img {
-    width: 80px;
-    height: 80px;
-  }
+	img {
+		width: 80px;
+		height: 80px;
+	}
 
-  ul {
-    display: flex;
-    gap: 32px;
-  }
+	ul {
+		display: flex;
+		gap: 32px;
+	}
 }
 
 .navItem {
-  padding: 14px;
+	padding: 14px;
 
-  &.active {
-    font-weight: 600;
-    border-bottom: 2px solid #5243c2;
-  }
+	&.active {
+		font-weight: 600;
+		border-bottom: 2px solid #5243c2;
+	}
 }
 
-.headerRight {
-  a {
-    display: inline-block;
-  }
-}
+.cart {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #5243c2;
+	background-color: #f5f5ff;
+	border-radius: 99px;
+	padding: 12px;
+	font-weight: 600;
+	position: relative;
+	transition: all 0.3s ease;
 
-.tel {
-  background-color: #ffeded;
-  border-radius: 99px;
-  padding: 6px 12px 6px 32px;
-  color: #ff4d4f;
-  font-weight: 600;
-  position: relative;
-}
+	svg {
+		path {
+			stroke: #5243c2;
+		}
+	}
 
-.tel::before {
-  content: "";
-  background-image: url(../../assets/images/icons/tel.svg);
-  height: 12px;
-  width: 12px;
-  position: absolute;
-  top: 10px;
-  left: 12px;
+	&:hover {
+		background-color: #d2d2fc;
+	}
 }

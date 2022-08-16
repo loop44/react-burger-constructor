@@ -1,0 +1,139 @@
+.cart {
+	height: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 140px 10px 90px 10px;
+	display: flex;
+	flex-direction: column;
+
+	.header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+
+		h1 {
+			font-weight: 600;
+			font-size: 36px;
+			line-height: 49px;
+		}
+
+		.remove {
+			cursor: pointer;
+			padding: 10px 20px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			color: #ff4d4f;
+			background: #ffeded;
+			border-radius: 99px;
+			transition: all 0.2s ease;
+
+			svg {
+				path {
+					stroke: #ff4d4f;
+				}
+			}
+
+			&:hover {
+				background-color: #f8d5d5;
+			}
+		}
+	}
+}
+.cartItem {
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	border: 2px solid #f5f5ff;
+	border-radius: 16px;
+	padding: 20px;
+	margin-bottom: 20px;
+
+	h2 {
+		font-size: 18px;
+		font-weight: 600;
+	}
+	.rightBlock {
+		display: flex;
+		align-items: center;
+		gap: 50px;
+
+		.price {
+			font-weight: 600;
+			font-size: 18px;
+		}
+	}
+
+	svg {
+		cursor: pointer;
+		transform: rotate(45deg);
+
+		circle {
+			fill: #f5f5ff;
+			transition: fill 0.2s ease;
+		}
+
+		path {
+			stroke: #5243c2;
+			transition: stroke 0.2s ease;
+		}
+
+		&:hover {
+			circle {
+				fill: #5243c2;
+			}
+			path {
+				stroke: #f5f5ff;
+			}
+		}
+	}
+}
+
+.footer {
+	.total {
+		border-top: 2px solid #f5f5ff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 10px;
+		padding-top: 20px;
+
+		p {
+			font-size: 20px;
+
+			span {
+				font-weight: 600;
+				color: #5243c2;
+				border-bottom: 2px solid #5243c2;
+			}
+		}
+	}
+
+	.buttonBlock {
+		display: flex;
+		justify-content: center;
+		padding-top: 20px;
+
+		button {
+			border: none;
+			outline: none;
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 20px;
+			padding: 16px 28px;
+			border-radius: 99px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			color: #5243c2;
+			background: #f5f5ff;
+
+			&:hover {
+				color: #f5f5ff;
+				background: #5243c2;
+			}
+		}
+	}
+}

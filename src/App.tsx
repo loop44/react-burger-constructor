@@ -7,6 +7,7 @@ import IngredientsBar from "./components/IngredientsBar";
 import BurgerConstructor from "./pages/BurgerConstructor";
 import Intro from "./pages/Intro";
 import Burgers from "./pages/Burgers";
+import Cart from "./pages/Cart";
 
 const App: React.FC = () => {
 	return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 						}
 					></Route>
 					<Route path="/burgers" element={<Burgers />} />
+					<Route path="/cart" element={<Cart />} />
 					{/* <Route path="*" element={<h1>Not found, sorry</h1>} /> */}
 				</Routes>
 				<Footer />
