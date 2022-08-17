@@ -1,8 +1,11 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
+import styles from "./Skeleton.module.scss";
+
 const Skeleton: React.FC = () => (
 	<ContentLoader
+		className={styles.item}
 		speed={2}
 		width={250}
 		height={304}
