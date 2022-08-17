@@ -1,13 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Loader from "./components/Loader";
 
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import IngredientsBar from "./components/IngredientsBar";
-import BurgerConstructor from "./pages/BurgerConstructor";
-import Intro from "./pages/Intro";
-import Burgers from "./pages/Burgers";
-import Cart from "./pages/Cart";
+const Footer = React.lazy(() => import("./components/Footer"));
+const Header = React.lazy(() => import("./components/Header"));
+const IngredientsBar = React.lazy(() => import("./components/IngredientsBar"));
+const BurgerConstructor = React.lazy(() => import("./pages/BurgerConstructor"));
+const Intro = React.lazy(() => import("./pages/Intro"));
+const Burgers = React.lazy(() => import("./pages/Burgers"));
+const Cart = React.lazy(() => import("./pages/Cart"));
 
 const App: React.FC = () => {
 	return (
@@ -15,19 +16,40 @@ const App: React.FC = () => {
 			<BrowserRouter>
 				<Header />
 				<Routes>
-					<Route path="/" element={<Intro />} />
+					<Route
+						path="/"
+						element={
+							<Suspense fallback={<Loader />}>
+								<Intro />
+							</Suspense>
+						}
+					/>
 					<Route
 						path="/constructor"
 						element={
-							<>
+							<Suspense fallback={<Loader />}>
 								<BurgerConstructor />
 								<IngredientsBar />
-							</>
+							</Suspense>
 						}
 					></Route>
-					<Route path="/burgers" element={<Burgers />} />
-					<Route path="/cart" element={<Cart />} />
-					{/* <Route path="*" element={<h1>Not found, sorry</h1>} /> */}
+					<Route
+						path="/burgers"
+						element={
+							<Suspense fallback={<Loader />}>
+								<Burgers />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/cart"
+						element={
+							<Suspense fallback={<Loader />}>
+								<Cart />
+							</Suspense>
+						}
+					/>
+					<Route path="*" element={<h1>Not found, sorry</h1>} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>
