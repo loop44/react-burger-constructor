@@ -150,8 +150,8 @@ const BurgerItem: React.FC<BurgerItemProps> = ({ item }) => {
 					}}
 				>
 					<p>
-						You already have a burger in the constructor! If you click OK it
-						will be deleted
+						You already have a custom burger in the constructor. If you click ok
+						it will be overwritten!
 					</p>
 				</Modal>
 			</div>
