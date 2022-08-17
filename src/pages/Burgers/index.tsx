@@ -71,7 +71,7 @@ const Burgers: React.FC = () => {
 				<div className={styles.items}>
 					{loadingStatus === FetchStatus.ERROR ? (
 						<div>
-							<h2>Произошла ошибка 😕</h2>
+							<h2 className={styles.fail}>Failed to fetch :( </h2>
 						</div>
 					) : (
 						<>{loadingStatus === FetchStatus.LOADING ? skeletons : burgers}</>
