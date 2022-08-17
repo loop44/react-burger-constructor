@@ -41,6 +41,10 @@
 		font-weight: 700;
 		font-size: 72px;
 		line-height: 80px;
+
+		@media (max-width: 1200px) {
+			display: none;
+		}
 	}
 }
 

@@ -12,6 +12,15 @@
 	&.visible {
 		bottom: 0;
 	}
+
+	@media (max-width: 700px) {
+		.footerRight {
+			display: none;
+		}
+	}
+	@media (max-width: 350px) {
+		padding: 18px 10px;
+	}
 }
 
 .footerLeft {

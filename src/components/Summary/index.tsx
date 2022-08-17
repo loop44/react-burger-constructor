@@ -17,7 +17,9 @@ import Modal from "../Modal";
 const Summary: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const [visible, setVisible] = React.useState(false);
+	const [mobileBarActive, setMobileBarActive] = React.useState(false);
 	const [burgerName, setBurgerName] = React.useState("");
+	const [value, setValue] = React.useState("");
 	const { price, time, oz, kcal } = useSelector(
 		(state: RootState) => state.burgerConstructor
 	);
@@ -27,7 +29,10 @@ const Summary: React.FC = () => {
 	};
 
 	const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setBurgerName(e.target.value);
+		if (e.target.value.length < 20) {
+			setValue(e.target.value);
+			setBurgerName(e.target.value);
+		}
 	};
 
 	const onClickOK = () => {
@@ -43,8 +48,27 @@ const Summary: React.FC = () => {
 
 	return (
 		<>
-			<div className={styles.summary}>
+			<div
+				className={`${styles.summary} ${mobileBarActive ? styles.active : ""}`}
+			>
 				<div>
+					<svg
+						onClick={() => setMobileBarActive(!mobileBarActive)}
+						className={styles.summaryMobileBtn}
+						width="44"
+						height="44"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M6 9L12 15L18 9"
+							stroke="black"
+							strokeWidth="2"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
 					<h2 className={styles.summaryTitle}>Summary</h2>
 					<div className={styles.summaryOrder}>
 						<span>${price.toFixed(2)}</span>
@@ -93,6 +117,7 @@ const Summary: React.FC = () => {
 				<input
 					className={styles.input}
 					onChange={onChangeInput}
+					value={value}
 					type="text"
 					placeholder="Burger name"
 				/>

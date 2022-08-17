@@ -10,8 +10,10 @@ import { deleteItem, removeAllItems } from "../../redux/cart/slice";
 import { CartItem } from "../../redux/cart/types";
 
 import styles from "./Cart.module.scss";
+import Modal from "../../components/Modal";
 
 const Cart: React.FC = () => {
+	const [visible, setVisible] = React.useState(false);
 	const dispatch = useAppDispatch();
 	const cartItemsData = useSelector(selectCartData);
 
@@ -21,6 +23,12 @@ const Cart: React.FC = () => {
 
 	const onClickRemoveAll = () => {
 		dispatch(removeAllItems());
+	};
+
+	const onClickOrder = () => {
+		if (cartItemsData.totalPrice > 0) {
+			setVisible(true);
+		}
 	};
 
 	return (
@@ -86,9 +94,17 @@ const Cart: React.FC = () => {
 					</p>
 				</div>
 				<div className={styles.buttonBlock}>
-					<button>Order now</button>
+					<button onClick={onClickOrder}>Order now</button>
 				</div>
 			</div>
+			<Modal
+				title="Bon appetit!"
+				visible={visible}
+				rejectHandler={() => setVisible(false)}
+				resolveHandler={() => setVisible(false)}
+			>
+				<p>Burgers ordered successfully</p>
+			</Modal>
 		</div>
 	);
 };

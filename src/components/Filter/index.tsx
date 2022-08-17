@@ -16,6 +16,7 @@ import search from "../../assets/images/icons/search.svg";
 import clear from "../../assets/images/icons/clear.svg";
 
 import styles from "./Filter.module.scss";
+import Scrollbars from "react-custom-scrollbars-2";
 
 const categories = ["All", "Meat", "Vegan", "Cheezy"];
 export const sortList = [
@@ -64,17 +65,19 @@ const Filter: React.FC = () => {
 	return (
 		<>
 			<div className={styles.categoryBlock}>
-				<ul>
-					{categories.map((categoryName, i: number) => (
-						<li
-							key={i}
-							onClick={() => onChangeCategory(i)}
-							className={categoryId === i ? styles.active : ""}
-						>
-							{categoryName}
-						</li>
-					))}
-				</ul>
+				<Scrollbars autoHeight autoHide>
+					<ul>
+						{categories.map((categoryName, i: number) => (
+							<li
+								key={i}
+								onClick={() => onChangeCategory(i)}
+								className={categoryId === i ? styles.active : ""}
+							>
+								{categoryName}
+							</li>
+						))}
+					</ul>
+				</Scrollbars>
 				<div className={styles.search}>
 					<img src={search} alt="" />
 

@@ -1,31 +1,35 @@
 .toolbar {
-  position: absolute;
-  top: 150px;
-  left: 35px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+	position: absolute;
+	top: 150px;
+	left: 35px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 
-  svg {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+	svg {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
 
-    path {
-      stroke: #bcb9d3;
-      transition: stroke 0.2s ease;
-    }
+		path {
+			stroke: #bcb9d3;
+			transition: stroke 0.2s ease;
+		}
 
-    &.active {
-      path {
-        stroke: #5243c2;
-      }
-    }
+		&.active {
+			path {
+				stroke: #5243c2;
+			}
+		}
 
-    &:hover {
-      path {
-        stroke: #5243c2;
-      }
-    }
-  }
+		&:hover {
+			path {
+				stroke: #5243c2;
+			}
+		}
+	}
+
+	@media (max-width: 430px) {
+		left: 5px;
+	}
 }

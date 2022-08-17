@@ -8,8 +8,10 @@ import { selectCartData } from "../../redux/cart/selectors";
 import styles from "./Header.module.scss";
 
 import Logo from "../../assets/images/logo.svg";
+import MobileMenuIcon from "../../assets/images/icons/mobileMenu.svg";
 
 const Header: React.FC = () => {
+	const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 	const changeMode = useSelector(selectChangeMode);
 	const location = useLocation();
 	const { totalCount, totalPrice } = useSelector(selectCartData);
@@ -102,6 +104,66 @@ const Header: React.FC = () => {
 							<span>{totalPrice}</span>
 						</NavLink>
 					) : null}
+
+					<img
+						className={styles.mobileBtn}
+						src={MobileMenuIcon}
+						onClick={() => setMobileMenuOpen(true)}
+						alt=""
+					/>
+
+					<div
+						className={
+							mobileMenuOpen
+								? `${styles.mobileMenu} ${styles.visible}`
+								: styles.mobileMenu
+						}
+					>
+						<NavLink
+							onClick={() => setMobileMenuOpen(false)}
+							to="/"
+							className={({ isActive }) =>
+								isActive
+									? `${styles.mobileNavItem} ${styles.active}`
+									: styles.mobileNavItem
+							}
+						>
+							Discover
+						</NavLink>
+						<NavLink
+							onClick={() => setMobileMenuOpen(false)}
+							to="/constructor"
+							className={({ isActive }) =>
+								isActive
+									? `${styles.mobileNavItem} ${styles.active}`
+									: styles.mobileNavItem
+							}
+						>
+							Constructor
+						</NavLink>
+						<NavLink
+							onClick={() => setMobileMenuOpen(false)}
+							to="/burgers"
+							className={({ isActive }) =>
+								isActive
+									? `${styles.mobileNavItem} ${styles.active}`
+									: styles.mobileNavItem
+							}
+						>
+							Burgers
+						</NavLink>
+						<NavLink
+							onClick={() => setMobileMenuOpen(false)}
+							to="/cart"
+							className={({ isActive }) =>
+								isActive
+									? `${styles.mobileNavItem} ${styles.active}`
+									: styles.mobileNavItem
+							}
+						>
+							Cart
+						</NavLink>
+					</div>
 				</div>
 			</div>
 		</header>

@@ -3,6 +3,10 @@
 	padding: 140px 10px 80px 10px;
 	display: flex;
 	flex-direction: column;
+
+	@media (max-width: 880px) {
+		padding: 110px 10px 80px 10px;
+	}
 }
 
 .items {

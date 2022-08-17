@@ -13,6 +13,7 @@ import { selectIngredients } from "../../redux/ingredients/selectors";
 import styles from "./IngredientsBar.module.scss";
 
 import { IngredientItem } from "../../redux/ingredients/types";
+import Scrollbars from "react-custom-scrollbars-2";
 
 const IngredientsBar = () => {
 	const dispatch = useAppDispatch();
@@ -61,7 +62,9 @@ const IngredientsBar = () => {
 				changeMode ? "" : `${styles.visible}`
 			}`}
 		>
-			<div className={styles.ingredientBarInner}>
+			<div
+				className={`${styles.ingredientBarInner} ${styles.ingredientBarBig}`}
+			>
 				{items.map((item) => (
 					<div className={styles.inrgedientItem} key={item.id}>
 						<img
@@ -115,6 +118,63 @@ const IngredientsBar = () => {
 					</div>
 				))}
 			</div>
+
+			<Scrollbars autoHeight className={styles.mobileBar}>
+				<div className={styles.ingredientBarInner}>
+					{items.map((item) => (
+						<div className={styles.inrgedientItem} key={item.id}>
+							<img
+								width={104}
+								height={59}
+								src={item.littleImg}
+								alt={item.title}
+							/>
+							<p>{item.title}</p>
+							<div>
+								<svg
+									className={item.count === 0 ? styles.disabled : ""}
+									width="28"
+									height="28"
+									onClick={() => onMinusItemClick(item)}
+									viewBox="0 0 28 28"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle cx="14" cy="14" r="14" fill="#D9D9D9" />
+									<path
+										d="M9 14H19"
+										stroke="black"
+										strokeWidth="2"
+										strokeLinecap="square"
+										strokeLinejoin="round"
+									/>
+								</svg>
+
+								<span>{item.count}</span>
+
+								<svg
+									className={item.count === 5 ? styles.disabled : ""}
+									width="28"
+									height="28"
+									onClick={() => onPlusItemClick(item)}
+									viewBox="0 0 28 28"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle cx="14" cy="14" r="14" fill="#D9D9D9" />
+									<path
+										d="M14 9V19M9 14H19"
+										stroke="black"
+										strokeWidth="1.5"
+										strokeLinecap="square"
+										strokeLinejoin="round"
+									/>
+								</svg>
+							</div>
+						</div>
+					))}
+				</div>
+			</Scrollbars>
 		</div>
 	);
 };

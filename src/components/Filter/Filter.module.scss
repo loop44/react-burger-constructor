@@ -63,6 +63,24 @@
 			cursor: pointer;
 		}
 	}
+
+	@media (max-width: 880px) {
+		flex-direction: column-reverse;
+		gap: 5px;
+		margin-bottom: 10px;
+
+		ul {
+			margin-bottom: 20px;
+		}
+
+		.search {
+			width: 100%;
+
+			input {
+				width: 100%;
+			}
+		}
+	}
 }
 
 .sortBlock {
@@ -98,6 +116,16 @@
 			&.active {
 				transform: rotate(-180deg);
 			}
+		}
+	}
+
+	@media (max-width: 880px) {
+		margin-bottom: 8px;
+		padding-bottom: 8px;
+
+		h1 {
+			font-size: 20px;
+			line-height: 24px;
 		}
 	}
 }
