@@ -49,7 +49,14 @@ const App: React.FC = () => {
 							</Suspense>
 						}
 					/>
-					<Route path="*" element={<h1>Not found, sorry</h1>} />
+					<Route
+						path="*"
+						element={
+							<h1 style={{ padding: "140px 10px 90px 10px	" }}>
+								Not found, sorry :(
+							</h1>
+						}
+					/>
 				</Routes>
 				<Footer />
 			</BrowserRouter>
