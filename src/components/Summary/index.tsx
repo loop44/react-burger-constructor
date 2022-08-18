@@ -5,6 +5,8 @@ import { v4 as uuid } from "uuid";
 
 import { RootState, useAppDispatch } from "../../redux/store";
 import { setItem } from "../../redux/cart/slice";
+import { removeAll } from "../../redux/burgerConstructor/slice";
+import { removeAllIngredients } from "../../redux/ingredients/slice";
 
 import timeIcon from "../../assets/images/icons/time.svg";
 import weightIcon from "../../assets/images/icons/weight.svg";
@@ -43,6 +45,8 @@ const Summary: React.FC = () => {
 				price: price,
 			})
 		);
+		dispatch(removeAll());
+		dispatch(removeAllIngredients());
 		setVisible(false);
 	};
 
