@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { preloadImage } from "../../utils/preloadImage";
+
 import { AdddIngredientsObject, IngredientsSliceState } from "./types";
 
 const initialState: IngredientsSliceState = {
@@ -110,6 +112,10 @@ const initialState: IngredientsSliceState = {
 		},
 	],
 };
+
+initialState.items.forEach(({ bigImg }) => {
+	preloadImage(bigImg);
+});
 
 const ingredientsSlice = createSlice({
 	name: "ingredients",
