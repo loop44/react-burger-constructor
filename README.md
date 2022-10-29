@@ -1,6 +1,6 @@
 # Burger Constructor
 
-## [Try it online](https://62fea53f00bef90008b0bcf4--burger-constructor.netlify.app/)
+## [Try it online](https://burger-constructor.netlify.app/)
 
 ## Preview
 
